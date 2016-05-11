@@ -15,7 +15,7 @@ function doTask(taskText) {
     var elemento = document.createElement("div");
     elemento.className = "task col-md-12 col-xs-12";
     elemento.id = "task";
-    elemento.innerHTML = '<input id="tachado" class="checked" type="checkbox" value="checkbox"  onclick="tachar(this)" dblclick="destachar(this)"><span>'+taskText+'</span>';
+    elemento.innerHTML = '<input id="tachado" class="checked" type="checkbox" value="checkbox"  onclick="tachar(this)"><span>'+taskText+'</span>';
     // importante para eliminar  
     var tacho = document.createElement("span");
     tacho.className="glyphicon glyphicon-trash pull-right";
@@ -31,9 +31,12 @@ function clean() {
     inputBox.value = "";
     inputBox.focus();
 }
-function tachar(dato) {
-    dato.nextSibling.className = "tachao";
-}
-function destachar(date) {
-    dato.nextSibling.className = "destachao";
+ function tachar(dato){
+    var marcado=dato.checked;
+    var textoPorMarcar = dato.nextSibling;
+    if(marcado){
+        textoPorMarcar.className= "tachao";
+    }else{
+        textoPorMarcar.className= "";
+    }
 }
